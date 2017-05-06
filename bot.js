@@ -2,17 +2,17 @@ require('dotenv').load();
 
 var Botkit = require('botkit');
 
-var Dialog = require('dialog-api/lib/botkit/messenger');
-var dialog = new Dialog(process.env.DIALOG_API_TOKEN, process.env.DIALOG_BOT_ID);
+// var Dialog = require('dialog-api/lib/botkit/messenger');
+// var dialog = new Dialog(process.env.DIALOG_API_TOKEN, process.env.DIALOG_BOT_ID);
 
 var controller = Botkit.facebookbot({
-  access_token: process.env.FACEBOOK_PAGE_ACCESS_TOKEN,
-  verify_token: process.env.FACEBOOK_VERIFY_TOKEN
+  access_token: process.env.page_token,
+  verify_token: process.env.verify_token
 });
 
 // Track incoming and outgoing messages
-controller.middleware.receive.use(dialog.incomingMiddleware);
-controller.middleware.send.use(dialog.outgoingMiddleware);
+// controller.middleware.receive.use(dialog.incomingMiddleware);
+// controller.middleware.send.use(dialog.outgoingMiddleware);
 
 var bot = controller.spawn({});
 
